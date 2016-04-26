@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 feature 'Enter names' do
 	scenario "Players submit their names" do
 		visit('/')
