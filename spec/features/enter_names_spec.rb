@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-feature 'Battle' do
-	scenario "Player submits their name" do
+feature 'Enter names' do
+	scenario "Players submit their names" do
 		visit('/')
 		fill_in('name1', with:"Ollie")
 		fill_in('name2', with:"Chris")
