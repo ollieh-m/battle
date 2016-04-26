@@ -7,7 +7,8 @@ class Battle < Sinatra::Base
   end
 
   post '/names' do
-  	@name = params[:name]
+  	@name1 = params[:name1]
+  	@name2 = params[:name2]
   	erb(:play)
   end
 
