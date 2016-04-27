@@ -21,10 +21,4 @@ describe Player do
 		end
 	end
 
-	context '#hit' do
-		it 'attacks a player' do
-			player2 = Player.new("Ollie")
-			expect{player.hit(player2)}.to change{player2.hit_points}.by -10
-		end
-	end
 end
