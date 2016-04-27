@@ -1,6 +1,6 @@
-<%= "#{@player1_name} attacked #{@player2_name}" %>
+<%= "#{@game.name(@game.player1)} attacked #{@game.name(@game.player2)}" %>
 <br>
-<%= "#{@player2_name}'s HP has decreased" %>
+<%= "#{@game.name(@game.player2)}'s HP has decreased" %>
 <br>
 <form action='/play'>
   <input type='submit' value='OK'>
