@@ -1,7 +1,7 @@
 <%= "Hey #{@game.name(@game.player1)}, hey #{@game.name(@game.player2)}! Welcome to the Battle..." %>
 <br>
 
-<%= "#{@game.name(@game.player2)}'s hit points: #{@game.hit_points(@game.player2)}" %>
+<%= "#{@game.name(@game.opponent)}'s hit points: #{@game.hit_points(@game.opponent)}" %>
 <form action='/attack'>
-  <input type='submit' value='Attack <%=@game.name(@game.player2)%>'>
+  <input type='submit' value='Attack <%=@game.name(@game.opponent)%>'>
 </form>

@@ -39,4 +39,22 @@ describe Game do
 		end
 	end
 
+	context 'taking turns' do
+		it 'current player is set to player2 when game is initialized and opponent is player1' do
+			expect(game.current_player).to eq player2
+			expect(game.opponent).to eq player1
+		end
+		it 'they swap with #change_turn' do
+			game.change_turn
+			expect(game.current_player).to eq player1
+			expect(game.opponent).to eq player2
+		end
+		it 'they swap back with another #change_turn' do
+			2.times { game.change_turn }
+			expect(game.current_player).to eq player2
+			expect(game.opponent).to eq player1
+		end
+
+	end
+
 end
