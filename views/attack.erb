@@ -1,9 +1,8 @@
 <div align="center">
-<h1><p> <%= @Player1.name %> attacked <%= @Player2.name %>! </p></h1><br>
+<h1><p> <%= @game.player_1.name %> attacked <%= @game.player_2.name %>! </p></h1><br>
 
-<%= @Player2.name %>: <%= @Player2.hp %> HP<br><br>
+<%= @game.player_2.name %>: <%= @game.player_2.hp %> HP<br><br>
 
-<form action="/attack">
-  <input type="submit" value="Attack">
-</form> 
+<a href="/play">OK</a>
+
 </div>
