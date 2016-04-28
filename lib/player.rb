@@ -13,8 +13,7 @@ def receive_damage
 	@hp -= DEFAULT_DAMAGE
 end
 
-def attack(player)
-	player.receive_damage
-end
+
+
 
 end
