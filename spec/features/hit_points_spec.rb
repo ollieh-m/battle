@@ -1,7 +1,8 @@
 
 feature "Hit points" do
-  scenario "Show Player 2's hit point" do
+  scenario "Show Players hit point" do
     sign_in_and_play
-    expect(page).to have_text("Bizarro Amy has 100 hit points. Prepare for BATTLE!")
+    expect(page).to have_text("Bizarro Amy has 100 hit points")
+    expect(page).to have_text("Amy has 100 hit points")
   end
 end
