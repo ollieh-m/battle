@@ -24,4 +24,26 @@ describe Game do
       expect(game.player_2).to eq player_2
     end
   end
+
+  describe '#active_player' do
+    it 'starts as player 1' do
+      expect(game.active_player).to eq player_1
+    end
+  end
+
+  describe '#change_active_player' do
+    it 'changes active player' do
+      game.change_active_player
+      expect(game.active_player).to eq(player_2)
+    end
+
+    it 'changes active player twice' do
+      game.change_active_player
+      game.change_active_player
+      expect(game.active_player).to eq(player_1)
+    end
+  end
+
+
+
 end
