@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require './lib/player'
 require './lib/game'
+require './lib/attack'
 
 class Battle < Sinatra::Base
 
@@ -21,7 +22,7 @@ class Battle < Sinatra::Base
 
   get '/play' do
     if @game.current_turn.name == "Machine"
-      @game.attack(@game.current_opponent)
+      @game.attack("Attack")
       @game.over? ? redirect('/game-over') : redirect('/attack-confirmation')
     else
       erb :play
@@ -33,7 +34,7 @@ class Battle < Sinatra::Base
   end
 
   post '/attack' do
-    @game.attack(@game.current_opponent)
+    @game.attack(params[:attack_method])
     @game.over? ? redirect('/game-over') : redirect('/attack-confirmation')
   end
 

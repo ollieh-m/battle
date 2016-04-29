@@ -2,9 +2,10 @@
 require 'game'
 
 describe Game do
-	subject(:game) { described_class.new(player_1, player_2) }
+	subject(:game) { described_class.new(player_1, player_2, attack) }
 	let(:player_1) { double :player }
 	let(:player_2) { double :player }
+	let(:attack) { double :attack }
 
 	describe "#initialize" do
 		it 'returns the name of Player 1' do
@@ -17,11 +18,11 @@ describe Game do
 	end
 
 	describe '#attack' do
-    	it 'attacks the opponent' do
-      		expect(game.player_2).to receive(:reduce)
-      		game.attack(game.player_2)
+    	it 'passes the relevant method to the attack object with the current opponent as the argument' do
+      		expect(attack).to receive(:attack).with(player_2)
+      		game.attack("Attack")
     	end
-		end
+	end
 
 	describe '#current_turn' do
 		it 'starts with player 1' do

@@ -9,8 +9,8 @@ class Player
     @hit_points = hit_points
   end
 
-  def reduce
-    @hit_points -=Random.rand(21)
+  def reduce(amount)
+    @hit_points -= amount
     @hit_points = 0 if @hit_points < 0
   end
 end

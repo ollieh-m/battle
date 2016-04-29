@@ -10,15 +10,16 @@ class Game
     @game
   end
 
-	def initialize(player_1, player_2)
+	def initialize(player_1, player_2, attack=Attack.new)
 		@player_1 = player_1
 		@player_2 = player_2
     @current_turn = player_1
     @current_opponent = player_2
+    @attack = attack
 	end
 
-	def attack(player)
-      player.reduce
+	def attack(method)
+      @attack.send(method.downcase, current_opponent)
   end
 
   def switch_turn

@@ -5,5 +5,7 @@
 <h2> <%= @game.current_turn.name%>'s turn </h2>
 
 <form action="/attack" method='post'>
-	<input type="submit" value="Attack">
+	<input type="submit" name='attack_method' value="Attack">
+	<input type="submit" name='attack_method' value="Safe_Attack">
 </form>
+

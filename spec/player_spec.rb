@@ -15,9 +15,8 @@ describe Player do
   end
 
   describe "#reduce" do
-    it 'reduces the hit points by a random value' do
-      allow(Random).to receive(:rand) { 10 }
-      expect { mittens.reduce }.to change { mittens.hit_points }.by(-10)
+    it 'reduces the hit points by the specified amount' do
+      expect { mittens.reduce(12) }.to change { mittens.hit_points }.by(-12)
     end
   end
 
