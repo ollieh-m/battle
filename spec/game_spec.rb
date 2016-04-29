@@ -48,8 +48,30 @@ describe Game do
 
 	describe '#game_over' do
 		it 'ends the game if the current opponent reaches 0HP' do
+			allow(player_1).to receive(:hit_points) { 1 }
 			allow(player_2).to receive(:hit_points) { 0 }
 			expect(game).to be_over
+		end
+		it 'ends the game if the current turn reaches 0HP' do
+			allow(player_2). to receive(:hit_points) { 1 }
+			allow(player_1).to receive(:hit_points) { 0 }
+			expect(game).to be_over
+		end
+	end
+
+	describe '#loser' do
+		it 'returns the player with zero points' do
+			allow(player_2). to receive(:hit_points) { 1 }
+			allow(player_1).to receive(:hit_points) { 0 }
+			expect(game.loser).to eq player_1
+		end
+	end
+
+	describe '#winner' do
+		it 'returns the player who hasn\'t lost' do
+			allow(player_2). to receive(:hit_points) { 1 }
+			allow(player_1).to receive(:hit_points) { 0 }
+			expect(game.winner).to eq player_2
 		end
 	end
 

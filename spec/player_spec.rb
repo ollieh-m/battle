@@ -27,4 +27,16 @@ describe Player do
     end
   end
 
+  describe '#self_harmer_check' do
+    it 'is true if self_harmer switch has been turned to true' do
+      dave.self_harmer
+      expect(dave.self_harmer_check).to eq true
+    end
+    it 'resets self_harmer switch to false after check' do
+      dave.self_harmer
+      dave.self_harmer_check
+      expect(dave.self_harmer_check).to eq false
+    end
+  end
+
 end

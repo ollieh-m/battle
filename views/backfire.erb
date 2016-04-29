@@ -1,0 +1,7 @@
+<%= @game.current_turn.name %>'s attack backfired! <%= @game.current_turn.name %> was attacked
+
+<h2> <%= @game.current_turn.name %>: <%= @game.current_turn.hit_points%>HP</h2>
+
+<form action="/switch-turns" method='post'>
+	<input type="submit" value="OK">
+</form>

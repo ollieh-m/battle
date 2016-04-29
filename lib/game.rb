@@ -27,7 +27,23 @@ class Game
   end
 
   def over?
-    @current_opponent.hit_points <= 0
+    @current_opponent.hit_points == 0 or @current_turn.hit_points == 0
+  end
+
+  def loser
+    if @current_opponent.hit_points == 0
+      @current_opponent
+    else
+      @current_turn
+    end
+  end
+
+  def winner
+    if loser == @current_opponent
+      @current_turn
+    else
+      @current_opponent
+    end
   end
   
 end

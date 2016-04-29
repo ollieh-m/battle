@@ -3,8 +3,8 @@ require 'attack'
 describe Attack do
 
 	subject(:attack){ described_class.new }
-	let(:victim){ double(:victim) }
-	let(:perpetrator){ double(:perpetrator) }
+	let(:victim){ double(:victim, reduce: nil ) }
+	let(:perpetrator){ double(:perpetrator, reduce: nil, :self_harmer => nil ) }
 
 	context '#standard attack' do
 		it 'reduces player\'s HPs by a random amount' do
@@ -22,8 +22,20 @@ describe Attack do
 	end
 
 	context '#risky attack' do
-		it 'reduces player\'s HPs by up to 30 or own HPs by up to 30' do
-
+		it 'reduces player\'s HPs by up to 30 if random number is more than 30' do
+			allow(Random).to receive(:rand){ 60 }
+			expect(victim).to receive(:reduce).with(30)
+			attack.risky_attack(victim,perpetrator)
+		end
+		it 'reduces own HPs by up to 30 if random number is less than 30' do
+			allow(Random).to receive(:rand){ 0 }
+			expect(perpetrator).to receive(:reduce).with(30)
+			attack.risky_attack(victim,perpetrator)
+		end
+		it 'records that perpetrator has harmed themself if random number is less than 30' do
+			allow(Random).to receive(:rand){ 0 }
+			expect(perpetrator).to receive(:self_harmer)
+			attack.risky_attack(victim,perpetrator)
 		end
 	end
 	

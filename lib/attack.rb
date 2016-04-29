@@ -8,4 +8,14 @@ class Attack
 		victim.reduce(10)
 	end
 
+	def risky_attack(victim,perpetrator)
+		damage = Random.rand(61)
+		if damage < 30 
+			perpetrator.reduce(30-damage)
+			perpetrator.self_harmer 
+		else
+			victim.reduce(damage-30)
+		end
+	end
+
 end

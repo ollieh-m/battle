@@ -1,2 +1,6 @@
-<%= @game.current_opponent.name %> lost
+<%= @game.loser.name %> lost
 <h1> GAME OVER! </h1>
+
+<h2> Final score </h2>
+<h2> <%= @game.winner.name %>: <%= @game.winner.hit_points %> </h2>
+<h2> <%= @game.loser.name %>: <%= @game.loser.hit_points %> </h2>

@@ -35,11 +35,19 @@ class Battle < Sinatra::Base
 
   post '/attack' do
     @game.attack(params[:attack_method])
-    @game.over? ? redirect('/game-over') : redirect('/attack-confirmation')
+    if @game.over?
+      redirect('/game-over')
+    else
+      @game.current_turn.self_harmer_check ? redirect('/attack-backfire') : redirect('/attack-confirmation')
+    end
   end
 
   get '/attack-confirmation' do
     erb(:attack)
+  end
+
+  get '/attack-backfire' do
+    erb(:backfire)
   end
 
   post '/switch-turns' do

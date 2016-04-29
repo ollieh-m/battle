@@ -2,11 +2,12 @@ class Player
 
   DEFAULT_HIT_POINTS = 60
 
-  attr_accessor :name, :hit_points
+  attr_reader :name, :hit_points
 
   def initialize(name, hit_points = DEFAULT_HIT_POINTS)
     @name = name
     @hit_points = hit_points
+    @self_harmer = false
   end
 
   def reduce(amount)
@@ -16,6 +17,16 @@ class Player
 
   def machine?
     @name == "Machine"
+  end
+
+  def self_harmer
+    @self_harmer = true
+  end
+
+  def self_harmer_check
+    answer = @self_harmer
+    @self_harmer = false
+    answer
   end
   
 end
