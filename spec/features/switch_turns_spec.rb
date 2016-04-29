@@ -3,7 +3,7 @@ feature "Switching of turns" do
   scenario "Player 2 gets a turn after Player 1 attacks" do
     sign_in_and_play
     click_link "Attack!"
-    click_link "OK"
+    click_button "OK"
     expect(page).to have_content("")
   end
 end
@@ -18,7 +18,7 @@ describe 'Switch turns' do
     scenario 'after player 1 attacks' do
       sign_in_and_play
       click_link "Attack!"
-      click_link "OK"
+      click_button "OK"
       # expect(page).not_to have_content "" # problem with repetition of "Amy"
       expect(page).to have_content "Bizarro Amy's turn"
     end

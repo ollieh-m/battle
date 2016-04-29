@@ -3,6 +3,8 @@
 
 <%= @game.opponent.name %>: <%= @game.opponent.hp %> HP<br><br>
 
-<a href="/play">OK</a>
+<form action="/swap" method="post">
+<input type="submit" value="OK">
+</form>
 
 </div>
