@@ -10,7 +10,7 @@ def initialize(name, hp=DEFAULT_HP)
 end
 
 def receive_damage
-	@hp -= DEFAULT_DAMAGE
+	@hp -= Kernel.rand(16)
 end
 
 

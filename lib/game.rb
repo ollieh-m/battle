@@ -26,7 +26,7 @@ class Game
 	end
 
 	def over?
-		@opponent.hp == 0
+		@opponent.hp <= 0
 	end
 
 end
