@@ -44,6 +44,11 @@ describe Game do
     end
   end
 
-
-
+  describe '#over?' do
+    it 'returns true if opponent reaches 0' do
+      allow(player_2).to receive(:hp){ 0 }
+      expect(game.over?).to eq true
+    end
+  end
+  
 end

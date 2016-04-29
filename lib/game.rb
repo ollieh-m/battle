@@ -9,12 +9,16 @@ class Game
 		@opponent = player_2
 	end
 
-  def attack(player)
-  	player.receive_damage
-  end
+  	def attack(player)
+  		player.receive_damage
+  	end
 
 	def change_active_player
 		@active_player, @opponent = @opponent, @active_player
+	end
+
+	def over?
+		@opponent.hp == 0
 	end
 
 end
