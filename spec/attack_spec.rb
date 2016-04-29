@@ -19,4 +19,5 @@ describe Attack do
 			attack.safe_attack(opponent)
 		end
 	end
+	
 end
