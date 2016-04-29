@@ -5,6 +5,10 @@ require './lib/game'
 class Battle < Sinatra::Base
   enable :sessions
 
+  before do
+    @game = Game.game_id
+  end
+
   get '/' do
     erb(:index)
   end
@@ -17,22 +21,15 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
-    @game = Game.game_id
     erb(:play)
   end
 
   get '/attack' do
-    @game = Game.game_id
     @game.attack(@game.opponent)
-    if @game.over?
-      erb(:game_over)
-    else
-      erb(:attack)
-    end
+    @game.over? ? erb(:game_over) : erb(:attack)
   end
 
   post '/swap' do
-    @game = Game.game_id
     @game.change_active_player
     redirect '/play'
   end
