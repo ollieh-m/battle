@@ -18,9 +18,9 @@ describe Game do
 	end
 
 	describe '#attack' do
-    	it 'passes the relevant method to the attack object with the current opponent as the argument' do
-      		expect(attack).to receive(:attack).with(player_2)
-      		game.attack("Attack")
+    	it 'passes the relevant method to the attack object with the current opponent as the first argument argument, perpetrator as second' do
+      		expect(attack).to receive(:attack).with(player_2,player_1)
+      		game.attack("attack")
     	end
 	end
 

@@ -1,11 +1,11 @@
 class Attack
 
-	def attack(player)
-		player.reduce(Random.rand(21))
+	def attack(victim,perpetrator)
+		victim.reduce(Random.rand(21))
 	end
 
-	def safe_attack(player)
-		player.reduce(10)
+	def safe_attack(victim,perpetrator)
+		victim.reduce(10)
 	end
 
 end

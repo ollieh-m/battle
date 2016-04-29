@@ -13,4 +13,9 @@ class Player
     @hit_points -= amount
     @hit_points = 0 if @hit_points < 0
   end
+
+  def machine?
+    @name == "Machine"
+  end
+  
 end

@@ -19,7 +19,7 @@ class Game
 	end
 
 	def attack(method)
-      @attack.send(method.downcase, current_opponent)
+      @attack.send(method, current_opponent, current_turn)
   end
 
   def switch_turn

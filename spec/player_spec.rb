@@ -20,4 +20,11 @@ describe Player do
     end
   end
 
+  describe '#machine?' do
+    it 'is true if name is machine' do
+      machine = Player.new("Machine")
+      expect(machine).to be_machine
+    end
+  end
+
 end
