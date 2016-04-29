@@ -31,19 +31,11 @@ class Game
   end
 
   def loser
-    if @current_opponent.hit_points == 0
-      @current_opponent
-    else
-      @current_turn
-    end
+    @current_opponent.hit_points == 0 ? @current_opponent : @current_turn
   end
 
   def winner
-    if loser == @current_opponent
-      @current_turn
-    else
-      @current_opponent
-    end
+    loser == @current_opponent ? @current_turn : @current_opponent
   end
   
 end

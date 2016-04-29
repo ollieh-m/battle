@@ -7,7 +7,6 @@ class Player
   def initialize(name, hit_points = DEFAULT_HIT_POINTS)
     @name = name
     @hit_points = hit_points
-    @self_harmer = false
   end
 
   def reduce(amount)
@@ -26,6 +25,16 @@ class Player
   def self_harmer_check
     answer = @self_harmer
     @self_harmer = false
+    answer
+  end
+
+  def knocked_out
+    @knocked_out = true
+  end
+
+  def knocked_out_check
+    answer = @knocked_out
+    @knocked_out = false
     answer
   end
   

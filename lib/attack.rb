@@ -18,4 +18,10 @@ class Attack
 		end
 	end
 
+	def knockout(victim,perpetrator)
+		damage = Random.rand(21)
+		victim.knocked_out if damage == 20
+		victim.reduce(damage)
+	end
+
 end

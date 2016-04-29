@@ -39,4 +39,16 @@ describe Player do
     end
   end
 
+  describe '#knocked_out_check' do
+    it 'is true if knocked_out switch has been turned to true' do
+      mittens.knocked_out
+      expect(mittens.knocked_out_check).to eq true
+    end
+    it 'resets knocked_out switch to false after check' do
+      mittens.knocked_out
+      mittens.knocked_out_check
+      expect(mittens.knocked_out_check).to eq false
+    end
+  end
+
 end
