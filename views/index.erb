@@ -1,19 +1,21 @@
-<h1>Welcome to Battle!</h1>
-<h2>Please sign in to play the game...</h2>
-
-<form action='/names' method='post'>
-
-  <label for="name1">
-    Player 1 name:
-    <input type='text' name='name1'>
+<h1>Battle!</h1>
+<h2>Sign in to play</h2>
+<form action="/names" method="post">
+	<label for="player_1_name">
+		Player 1
+		<input type="text" name="player_1_name">
 	</label>
-
-  <label for="name2">
-    Player 2 name:
-    <input type='text' name='name2'>
+	<br>
+	<br>
+	<label for="player_2_name">
+		Player 2
+		<input type="text" name="player_2_name">
 	</label>
-
-  <input type='submit' value='Submit'>
+	<label for="player_2_name">
+		Or tick to play against machine
+		<input type="checkbox" name="player_2_name" value="Machine">
+	</label>
+	<br>
+	<br>
+	<input type="submit" value="Submit">
 </form>
-
-<hr/>

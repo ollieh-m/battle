@@ -1,7 +1,13 @@
-<%= "Hey #{@game.name(@game.player1)}, hey #{@game.name(@game.player2)}! Welcome to the Battle..." %>
-<br>
+<h1><%= @game.player_1.name %> vs <%= @game.player_2.name %></h1>
+<h2><%= @game.player_2.name %>: <%= @game.player_2.hit_points%>HP</h2>
+<h2><%= @game.player_1.name %>: <%= @game.player_1.hit_points%>HP</h2>
 
-<%= "#{@game.name(@game.opponent)}'s hit points: #{@game.hit_points(@game.opponent)}" %>
-<form action='/attack'>
-  <input type='submit' value='Attack <%=@game.name(@game.opponent)%>'>
+<h2> <%= @game.current_turn.name%>'s turn </h2>
+
+<form action="/attack" method='post'>
+	<button type="submit" name='attack_method' value="attack">Standard Attack</button>
+	<button type="submit" name='attack_method' value="safe_attack">Safe Attack</button>
+	<button type="submit" name='attack_method' value="risky_attack">Risky Attack</button>
+	<button type="submit" name='attack_method' value="knockout">Attempt Knock-out</button>
 </form>
+

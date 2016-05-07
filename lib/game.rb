@@ -1,27 +1,41 @@
 class Game
-	attr_reader :player1, :player2, :current_player, :opponent
 
-	def initialize(player1, player2)
-		@player1 = player1
-		@player2 = player2
-		@current_player = @player2
-		@opponent = @player1
+ attr_reader :player_1, :player_2, :current_turn, :current_opponent
+
+  def self.start_game(player1,player2)
+    @game = Game.new(player1,player2)
+  end
+
+  def self.game
+    @game
+  end
+
+	def initialize(player_1, player_2, attack=Attack.new)
+		@player_1 = player_1
+		@player_2 = player_2
+    @current_turn = player_1
+    @current_opponent = player_2
+    @attack = attack
 	end
 
-	def hit(victim)
-		victim.receive_hit
-	end
+	def attack(method)
+      @attack.send(method, current_opponent, current_turn)
+  end
 
-	def name(player)
-		player.name
-	end
+  def switch_turn
+    @current_turn, @current_opponent = @current_opponent, @current_turn
+  end
 
-	def hit_points(player)
-		player.hit_points
-	end
+  def over?
+    @current_opponent.hit_points == 0 or @current_turn.hit_points == 0
+  end
 
-	def change_turn
-		@current_player, @opponent = @opponent, @current_player
-	end
+  def loser
+    @current_opponent.hit_points == 0 ? @current_opponent : @current_turn
+  end
 
+  def winner
+    loser == @current_opponent ? @current_turn : @current_opponent
+  end
+  
 end

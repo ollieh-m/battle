@@ -1,60 +1,79 @@
+
 require 'game'
 
 describe Game do
-	let(:player1){ double(:player1)}
-	let(:player2){ double(:player2)}
-	let(:victim) { spy(:victim) }
-	subject(:game){ described_class.new player1,player2}
+	subject(:game) { described_class.new(player_1, player_2, attack) }
+	let(:player_1) { double :player }
+	let(:player_2) { double :player }
+	let(:attack) { double :attack }
 
-	context '#player1' do
-		it 'retrieves the first player' do
-			expect(game.player1).to eq player1
+	describe "#initialize" do
+		it 'returns the name of Player 1' do
+			expect(game.player_1).to eq player_1
+		end
+
+		it 'returns the name of Player 2' do
+			expect(game.player_2).to eq player_2
 		end
 	end
 
-	context '#player2' do
-		it 'retrieves the second player' do
-			expect(game.player2).to eq player2
+	describe '#attack' do
+    	it 'passes the relevant method to the attack object with the current opponent as the first argument argument, perpetrator as second' do
+      		expect(attack).to receive(:attack).with(player_2,player_1)
+      		game.attack("attack")
+    	end
+	end
+
+	describe '#current_turn' do
+		it 'starts with player 1' do
+			expect(game.current_turn).to eq player_1
+		end
+
+		it 'switches turns from player 1 to player 2' do
+			game.switch_turn
+			expect(game.current_turn).to eq player_2
 		end
 	end
 
-	context '#hit' do
-		it 'makes the victim receive a hit' do
-			game.hit(victim)
-			expect(victim).to have_received(:receive_hit)
+	describe '#current_opponent' do
+		it 'starts with player 2' do
+			expect(game.current_opponent).to eq player_2
+		end
+
+		it 'opponent switches from player 2 to player 1' do
+			game.switch_turn
+			expect(game.current_opponent).to eq player_1
 		end
 	end
 
-	context '#name' do
-		it 'tells the correct player to return its name' do
-			expect(player1).to receive(:name)
-			game.name(player1)
+	describe '#game_over' do
+		it 'ends the game if the current opponent reaches 0HP' do
+			allow(player_1).to receive(:hit_points) { 1 }
+			allow(player_2).to receive(:hit_points) { 0 }
+			expect(game).to be_over
+		end
+		it 'ends the game if the current turn reaches 0HP' do
+			allow(player_2). to receive(:hit_points) { 1 }
+			allow(player_1).to receive(:hit_points) { 0 }
+			expect(game).to be_over
 		end
 	end
 
-	context '#hit_points' do
-		it 'tells the correct player to return its hitpoints' do
-			expect(player1).to receive(:hit_points)
-			game.hit_points(player1)
+	describe '#loser' do
+		it 'returns the player with zero points' do
+			allow(player_2). to receive(:hit_points) { 1 }
+			allow(player_1).to receive(:hit_points) { 0 }
+			expect(game.loser).to eq player_1
 		end
 	end
 
-	context 'taking turns' do
-		it 'current player is set to player2 when game is initialized and opponent is player1' do
-			expect(game.current_player).to eq player2
-			expect(game.opponent).to eq player1
+	describe '#winner' do
+		it 'returns the player who hasn\'t lost' do
+			allow(player_2). to receive(:hit_points) { 1 }
+			allow(player_1).to receive(:hit_points) { 0 }
+			expect(game.winner).to eq player_2
 		end
-		it 'they swap with #change_turn' do
-			game.change_turn
-			expect(game.current_player).to eq player1
-			expect(game.opponent).to eq player2
-		end
-		it 'they swap back with another #change_turn' do
-			2.times { game.change_turn }
-			expect(game.current_player).to eq player2
-			expect(game.opponent).to eq player1
-		end
-
 	end
+
 
 end

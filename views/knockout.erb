@@ -1,7 +1,7 @@
-<%= @game.current_opponent.name %> was attacked
+<%= @game.current_opponent.name %> was knocked out and misses a turn!
 
 <h2> <%= @game.current_opponent.name %>: <%= @game.current_opponent.hit_points%>HP</h2>
 
-<form action="/switch-turns" method='post'>
+<form action="/play">
 	<input type="submit" value="OK">
 </form>
